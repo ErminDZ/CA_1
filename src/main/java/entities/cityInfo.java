@@ -1,4 +1,4 @@
-package entities;
-
-public class cityInfo {
-}
+//package entities;
+//
+//public class cityInfo {
+//}
