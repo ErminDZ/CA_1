@@ -2,6 +2,7 @@ package entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,15 +22,17 @@ public class Address implements Serializable {
     //relationer
     @OneToMany(mappedBy = "address")
     @JoinColumn(name = "person_id")
-    private List<Person> persons;
+    private List<Person> persons = new ArrayList<>();
 
     //Constructor
     public Address() {
     }
 
-    public Address(String street, String additionalInfo) {
+    public Address(Long id, String street, String additionalInfo, List<Person> persons) {
+        this.id = id;
         this.street = street;
         this.additionalInfo = additionalInfo;
+        this.persons = persons;
     }
 
     //Getter og setter

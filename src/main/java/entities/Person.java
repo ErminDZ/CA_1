@@ -22,16 +22,18 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(long id, String email, String firstName, String lastName) {
+    public Person(long id, String email, String firstName, String lastName, List<Phone> phones, Address address) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phones = phones;
+        this.address = address;
     }
 
     //Relation
     @OneToMany(mappedBy = "person")
-    private List<Phone> phones;
+    private List<Phone> phones = new ArrayList<>();
 
     @ManyToOne
     private Address address;
