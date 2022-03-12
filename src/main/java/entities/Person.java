@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -17,7 +18,7 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
 
-
+    //Constructor
     public Person() {
     }
 
@@ -28,6 +29,14 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
+    //Relation
+    @OneToMany(mappedBy = "person")
+    private List<Phone> phones;
+
+    @ManyToOne
+    private Address address;
+
+    //Getter og setter
     public long getId() {
         return id;
     }
@@ -58,5 +67,35 @@ public class Person implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void addPhone(Phone phone){
+        this.phones.add(phone);
+        if (phone.getPerson() != this){
+            phone.setPerson(this);
+        }
+    }
+
+    public void addAddress(Address address){
+        this.address = address;
+        if (!address.getPersons().contains(this)){
+            address.getPersons().add(this);
+        }
     }
 }
