@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "Person.getAllRows", query = "select p from Person p")
+@NamedQuery(name = "Person.getPerson", query = "select p from Person p where p.id = :id")
+@NamedQuery(name = "addPerson",query = "")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,6 +39,7 @@ public class Person implements Serializable {
 
     @ManyToOne
     private Address address;
+
 
     //Getter og setter
     public long getId() {
@@ -99,5 +102,17 @@ public class Person implements Serializable {
         if (!address.getPersons().contains(this)){
             address.getPersons().add(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phones=" + phones +
+                ", address=" + address +
+                '}';
     }
 }

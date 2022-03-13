@@ -1,10 +1,15 @@
 
 package facades;
 
+import dtos.PersonDTO;
 import dtos.PersonsDTO;
+import entities.Address;
+import entities.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.util.List;
 
 /**
  *
@@ -47,7 +52,5 @@ public class PersonFacade implements IPersonFacade {
             em.close();
         }
     }
-
-
 
 }

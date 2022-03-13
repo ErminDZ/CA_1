@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //Uncomment the line below, to temporarily disable this test
-//@Disabled
+@Disabled
 public class PersonFacadeTest {
 
     private static EntityManagerFactory emf;
@@ -21,5 +21,6 @@ public class PersonFacadeTest {
     @Test
     public void testAFacadeMethod() throws Exception {
         assertEquals(2, facade.getAllPersons(), "Expects two rows in the database");
+       // assertEquals(1,facade.getPerson(1),"Expects person with the id = 1");
     }
 }
